@@ -26,6 +26,51 @@ Reference the OAuth.gs script. You will need a Client ID and a Client Secret - b
 Use Facebook's Graph API for Right Scopes
 -
 
+Breaking Down the Script
+-
+This section will be heavily referencing the ```Code.gs``` file.
+For the UX, this particular script will run when the user navigates to the top ribbon in the Google Sheet to click on our custom menu item. 
+This function calls the function we specify and the text to display:
+```
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu('PULL PACING')
+    .addItem('Get Reports', 'showSidebar')
+    .addToUi();
+}
+```
+It ends up looking something like this:
+![Custom Menu Item GS](images/5.PNG?raw=true)
+
+This script in particular is also set up to simply add on new information each time it is called with the append row function at the end:
+```
+function toSheet(string) {
+  var id = string.accounts;
+  var start = ...;
+  var end = ...;
+  var bidAmount = ...;
+  //Logger.log(id);
+  
+  var row = [id, start, end, bidAmount]; // these are some examples of any variables you declare above -- list them in order of how you want them to appear in the spreadsheet cells
+  
+  var sheet = SpreadsheetApp.getActiveSheet();
+  
+  sheet.appendRow(row);
+}
+```
+After a certain time period, the outdated pacing data gets back-logged into a separate spreadsheet that is automatically saved in a Drive folder and cleared from this main spreadsheet to avoid clutter:
+```
+
+```
+The API call URL has been divided into ```base``` and ```endpoint```. The base remains the same, but the endpoint may differ based on your inputs into the Graph API. If you change the JSON data you wish to pull, the endpoint may change -- separating the endpoint from the base of the URL is simply a best practice but is not necessary.
+```
+//setup api url
+  var base = 'https://graph.facebook.com/v3.3/';
+  var endpoint = 'me?fields=id%2Cname%2Caccounts%2Cadaccounts%7Baccount_id%2Camount_spent%2Cbusiness_name%2Cid%2Cadsets%7Bpacing_type%2Cbudget_remaining%2Ccreated_time%2Cend_time%2Cstart_time%7D%7D&access_token=';
+  var url = base + endpoint;
+  //Logger.log(url);
+```
+
 Get the Correct Permissions
 -
 
