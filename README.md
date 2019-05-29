@@ -23,13 +23,13 @@ Reference the OAuth.gs script. You will need a Client ID and a Client Secret - b
 
 ![Client ID and Client Secret](images/3.PNG?raw=true)
 
-Use Facebook's Graph API for Right Scopes
+Use <a href="https://developers.facebook.com/tools/explorer/">Facebook's Graph API</a> for Right Scopes
 -
 
 Breaking Down the Script
 -
 This section will be heavily referencing the ```Code.gs``` file.
-For the UX, this particular script will run when the user navigates to the top ribbon in the Google Sheet to click on our custom menu item. 
+For the UX, this particular script will run when the user navigates to the top ribbon in the Google Sheet to click on our custom menu item. <a href="https://developers.google.com/apps-script/guides/menus">Click here</a> for more info on adjusting the sheet UI, custom menus/dialogues/sidebars in Apps Script.
 This function calls the function we specify and the text to display:
 ```
 function onOpen() {
@@ -51,7 +51,7 @@ The API call URL has been divided into ```base``` and ```endpoint```. The base r
   var url = base + endpoint;
   //Logger.log(url);
 ```
-This script in particular is also set up to simply add on new information each time it is called with the append row function at the end:
+This script in particular is also set up to simply add on new information each time it is called with the <a href="https://developers.google.com/apps-script/reference/spreadsheet/sheet#appendRow(Object)">append row function</a> at the end:
 ```
 function toSheet(string) {
   var id = string.accounts;
@@ -67,7 +67,7 @@ function toSheet(string) {
   sheet.appendRow(row);
 }
 ```
-My team pulls pacing every month, so this script has a function accessible from the custom menu "PULL PACING" at the top to backlog the last month's data in a new spreadsheet and clear out this information so we can pull the current month's pacing report.
+My team pulls pacing every month, so this script has a function accessible from the custom menu "PULL PACING" at the top to backlog the last month's data in a new spreadsheet and clear out this information so we can pull the current month's pacing report. For more on working with dates in Apps Script, <a href="https://developers.google.com/apps-script/reference/utilities/utilities#formatDate(Date,String,String)">check out the Utilities class</a>. 
 ```
 function backlog() {
   // names the backup spreadsheet with current month and name of current spreadsheet
