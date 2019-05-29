@@ -36,12 +36,21 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu('PULL PACING')
     .addItem('Get Reports', 'showSidebar')
+    .addItem('Clean Out Report', 'backlog')
     .addToUi();
 }
 ```
 It ends up looking something like this:
 ![Custom Menu Item GS](images/5.PNG?raw=true)
 
+The API call URL has been divided into ```base``` and ```endpoint```. The base remains the same, but the endpoint may differ based on your inputs into the Graph API. If you change the JSON data you wish to pull, the endpoint may change -- separating the endpoint from the base of the URL is simply a best practice but is not necessary.
+```
+//setup api url
+  var base = 'https://graph.facebook.com/v3.3/';
+  var endpoint = 'me?fields=id%2Cname%2Caccounts%2Cadaccounts%7Baccount_id%2Camount_spent%2Cbusiness_name%2Cid%2Cadsets%7Bpacing_type%2Cbudget_remaining%2Ccreated_time%2Cend_time%2Cstart_time%7D%7D&access_token=';
+  var url = base + endpoint;
+  //Logger.log(url);
+```
 This script in particular is also set up to simply add on new information each time it is called with the append row function at the end:
 ```
 function toSheet(string) {
@@ -58,17 +67,28 @@ function toSheet(string) {
   sheet.appendRow(row);
 }
 ```
-After a certain time period, the outdated pacing data gets back-logged into a separate spreadsheet that is automatically saved in a Drive folder and cleared from this main spreadsheet to avoid clutter:
+My team pulls pacing every month, so this script has a function accessible from the custom menu "PULL PACING" at the top to backlog the last month's data in a new spreadsheet and clear out this information so we can pull the current month's pacing report.
 ```
-
-```
-The API call URL has been divided into ```base``` and ```endpoint```. The base remains the same, but the endpoint may differ based on your inputs into the Graph API. If you change the JSON data you wish to pull, the endpoint may change -- separating the endpoint from the base of the URL is simply a best practice but is not necessary.
-```
-//setup api url
-  var base = 'https://graph.facebook.com/v3.3/';
-  var endpoint = 'me?fields=id%2Cname%2Caccounts%2Cadaccounts%7Baccount_id%2Camount_spent%2Cbusiness_name%2Cid%2Cadsets%7Bpacing_type%2Cbudget_remaining%2Ccreated_time%2Cend_time%2Cstart_time%7D%7D&access_token=';
-  var url = base + endpoint;
-  //Logger.log(url);
+function backlog() {
+  // names the backup spreadsheet with current month and name of current spreadsheet
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var date = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "MMMM-YYYY");
+  var ssName = date + " " + ss.getName();
+  Logger.log(ssName);
+  
+  var ogSSName = ss.getName();
+  var backupSheet = DriveApp.getFilesByName(ogSSName);
+  Logger.log(backupSheet.hasNext());
+  
+  // duplicate spreadsheet and put into specific folder
+  var destFolder = DriveApp.getFoldersByName('<NAME OF FOLDER>').next();
+  DriveApp.getFileById(ss.getId()).makeCopy('Backlog: ' + ssName, destFolder);
+  
+  // clear out old data from original spreadsheet
+  var sheet = ss.getActiveSheet();
+  var dataRange = sheet.getRange(['A3:G1000']).activate();
+  dataRange.clearContent(); // rather than just doing .clear(), this will maintain any functions / formatting you may have in ss
+}
 ```
 
 Get the Correct Permissions
