@@ -5,7 +5,7 @@ First, create a new app by heading over to https://developers.facebook.com - thi
 
 Add the Facebook Login capability in your dashboard under Products:
 
-<!--![Facebook Login Product](images/1.PNG?raw=true)-->
+![Facebook Login Product](images/1.PNG?raw=true)
 
 Get the API Access Token
 -
@@ -36,3 +36,7 @@ Things you will need to submit your app for review:
 - [ ] A privacy policy -- you can <a href="https://www.freeprivacypolicy.com/">make one for free here</a> (depending on your needs, there may be some add on costs) 
 - [ ] You will also need an app URL (since this is a web-based app). In your GAS editor, go to Publish > Deploy as web app... > then set it to "Only Myself" in the drop-down under "Who has access to this app?" -- take this URL and add it to your Facebook App dashboard.
 - [ ] Under App Review > My Permissions and Features in your App Dashboard, you will need to make a case for each permission this app uses and why (in our case, this would be the ```ads_read``` and ```ads_management``` permissions we requested in the Graph API.
+
+![App Review](images/4.PNG?raw=true)
+
+
