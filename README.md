@@ -4,7 +4,8 @@ Google Apps Script that connects with Facebook API to automatically pull pacing 
 First, create a new app by heading over to https://developers.facebook.com - this will be a web-based app since we are connecting the API to a Google Sheet. You will also need a <a href="https://developers.facebook.com/docs/marketing-api/businessmanager/systemuser">system user</a>. I created both a regular system user as well as an admin-level system user.
 
 Add the Facebook Login capability in your dashboard under Products:
-<!--image 1-->
+
+![Facebook Login Product](images/1.PNG?raw=true)
 
 Get the API Access Token
 -
@@ -15,9 +16,12 @@ Go to the desired spreadsheet, Tools > Script Editor, and delete the boiler-plat
 1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF
 ```
 Select the most up-to-date version of the libary and hit Save.
-<!--image 2-->
+
+![Add Library to GAS](images/2.PNG?raw=true)
+
 Reference the OAuth.gs script. You will need a Client ID and a Client Secret - both of these can be found in your app's dashboard. Go to Settings > Basic - the App ID is what you will put under CLIENT_ID, and the App Secret will be used for the CLIENT_SECRET variable in the script.
-<!--image 3-->
+
+![Client ID and Client Secret](images/3.PNG?raw=true)
 
 Use Facebook's Graph API for Right Scopes
 -
