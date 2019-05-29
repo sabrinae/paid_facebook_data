@@ -5,7 +5,7 @@ First, create a new app by heading over to https://developers.facebook.com - thi
 
 Add the Facebook Login capability in your dashboard under Products:
 
-![Facebook Login Product](images/1.PNG?raw=true)
+<!--![Facebook Login Product](images/1.PNG?raw=true)-->
 
 Get the API Access Token
 -
