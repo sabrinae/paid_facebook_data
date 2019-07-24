@@ -34,6 +34,7 @@ Minimizing API Requests
 - [ ] be aware of the API's <a href="https://developers.facebook.com/docs/marketing-api/insights/best-practices/">rate limit</a>
 - [ ] <a href="https://developers.facebook.com/docs/graph-api/using-graph-api/#paging">use the Facebook Graph API</a> - this will save you time as you figure out the exact URL endpoint your app requires
 - [ ] knowing how URLs are structured will be really helpful, take a look at this <a href="https://en.wikipedia.org/wiki/Query_string">article on URL query strings and encoding</a>
+- [ ] here is a <a href="https://stackoverflow.com/questions/21454979/use-the-facebook-api-in-a-google-apps-script-web-app/23300702">really great overview</a> for branding any login processes for Facebook, working with the API in GAS, and establishing your app as a web app when working with GAS
 
 Breaking Down the Script
 -
