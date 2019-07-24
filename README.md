@@ -26,6 +26,13 @@ Reference the OAuth.gs script. You will need a Client ID and a Client Secret - b
 Use <a href="https://developers.facebook.com/tools/explorer/">Facebook's Graph API</a> for Right Scopes
 -
 
+Best Practices
+-
+Minimizing API Requests
+- [ ] For accessing several URLs that may be unrelated, pulling data from multiple accounts / from multiple nodes, or <a href="https://developers.facebook.com/docs/graph-api/making-multiple-requests#simple">making batch requests</a>, reference <a href="https://www.sammyk.me/optimizing-request-queries-to-the-facebook-graph-api">this article</a> for a quick overview on many ways to do this.
+- [ ] be aware of the API's <a href="https://developers.facebook.com/docs/marketing-api/insights/best-practices/">rate limit</a>
+- [ ] <a href="https://developers.facebook.com/docs/graph-api/using-graph-api/#paging">use the Facebook Graph API</a> - this will save you time as you figure out the exact URL endpoint your app requires
+
 Breaking Down the Script
 -
 This section will be heavily referencing the ```Code.gs``` file.
