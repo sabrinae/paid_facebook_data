@@ -30,6 +30,7 @@ Best Practices
 -
 Minimizing API Requests
 - [ ] For accessing several URLs that may be unrelated, pulling data from multiple accounts / from multiple nodes, or <a href="https://developers.facebook.com/docs/graph-api/making-multiple-requests#simple">making batch requests</a>, reference <a href="https://www.sammyk.me/optimizing-request-queries-to-the-facebook-graph-api">this article</a> for a quick overview on many ways to do this.
+- [ ] for further reference on batch requests in Google Apps Script, take a look at <a href="https://gist.github.com/tanaikech/f167b9280a8e710804e4061571b53fb9"> this Github page</a>
 - [ ] be aware of the API's <a href="https://developers.facebook.com/docs/marketing-api/insights/best-practices/">rate limit</a>
 - [ ] <a href="https://developers.facebook.com/docs/graph-api/using-graph-api/#paging">use the Facebook Graph API</a> - this will save you time as you figure out the exact URL endpoint your app requires
 - [ ] knowing how URLs are structured will be really helpful, take a look at this <a href="https://en.wikipedia.org/wiki/Query_string">article on URL query strings and encoding</a>
